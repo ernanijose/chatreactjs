@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import io from "socket.io-client";
+import { useState } from 'react';
+
+const socket = io.connect("http://localhost:3001");
 
 function App() {
+  const [userName, setUserName] = useState("");
+  const [room, setRoom] = useState("");
+
+  const joinRoom = () => {
+    
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Entrou no Chat</h3>
+      <input type="text" value="Ernani..." />
+      <input type="text" value="ID da Sala..." />
+      <button>Entrar na Sala</button>
     </div>
   );
 }
