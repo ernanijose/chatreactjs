@@ -18,6 +18,12 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log(`Usuario ${socket.id} conectado`);
 
+    //aqui pega os usuarios que estão se juntando a sala
+    socket.on("join_room", (data) => {
+        socket.join(data);
+        console.log(`O usuário ${socket.id} se juntou a sala ${data}`);
+    });
+
     socket.on("disconnect", () => {
         console.log(`Usuário ${socket.id} se desconectou!`);
     });
