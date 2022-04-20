@@ -21,7 +21,13 @@ io.on("connection", (socket) => {
     //aqui pega os usuarios que estão se juntando a sala
     socket.on("join_room", (data) => {
         socket.join(data);
-        console.log(`O usuário ${socket.id} se juntou a sala ${data}`);
+        console.log(`User with ID: ${socket.id} joined room: ${data}`);
+    });
+
+    //aqui é onde escuta quem entrou na sala para mostrar no reactjs
+    socket.on("send_message", (data) => {
+        //console.log(data);
+        socket.to(data.room).emit("receive_message", data);
     });
 
     socket.on("disconnect", () => {
